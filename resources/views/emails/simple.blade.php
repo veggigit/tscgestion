@@ -5,7 +5,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>{{$msgData['title']}}</title>
+    <title>{{$title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
@@ -15,21 +15,21 @@
         <!-- header -->
         <tr>
             <td bgcolor="#70bbd9">
-                <img src="{{$msgData['header']}}" width="450" height="70" style="display: block;"
+                <img src="{{$header}}" width="450" height="70" style="display: block;"
                     alt="Tu Sindicato Consorcio">
             </td>
         </tr>
         <!-- img -->
         <tr>
             <td bgcolor="#70bbd9">
-                <img src="{{$msgData['img']}}" width="450" height="auto" style="display: block;" alt="{{$msgData['title']}}">
+                <img src="{{$img}}" width="450" height="auto" style="display: block;" alt="{{$title}}">
             </td>
         </tr>
         <!-- content -->
         <tr>
             <td bgcolor="#ffffff" style="padding: 15px 40px 30px 40px;">
-                <h1>{{$msgData['title']}}</h1>
-                <p>{{$msgData['body']}}</p>
+                <h1>{{$title}}</h1>
+                <p>{{$body}}</p>
             </td>
         </tr>
         <!-- footer -->

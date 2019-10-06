@@ -57,7 +57,7 @@ class NewsletterController extends Controller
         // }
 
         //building message
-        $msgData = [
+        $data = [
             'header' => asset('img/header.png'),
             'img' => $pn->img,
             'title' => $pn->title,
@@ -65,7 +65,7 @@ class NewsletterController extends Controller
             'link' => $pn->link
         ];
 
-        Mailgun::send('newsletter.simple', $msgData, function (Message $message) use ($arrRecipients, $pn) {
+        Mailgun::send('emails.simple', $data, function (Message $message) use ($arrRecipients, $pn) {
             $message->from('informativo@mg.tusindicatoconsorcio.cl', $pn->sender_name)
                 ->subject($pn->subject);
 
@@ -92,37 +92,4 @@ class NewsletterController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
