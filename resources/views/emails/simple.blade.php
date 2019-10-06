@@ -22,7 +22,7 @@
         <!-- img -->
         <tr>
             <td bgcolor="#70bbd9">
-                <img src="{{Storage::url($img)}}" width="450" height="auto" style="display: block;" alt="{{$title}}">
+                <img src="{{$imgNews}}" width="450" height="auto" style="display: block;" alt="{{$title}}">
             </td>
         </tr>
         <!-- content -->

@@ -7,7 +7,7 @@ use App\Newsletter;
 use App\TestUser;
 use App\Http\Requests\NewsletterFormRequest;
 use Bogardo\Mailgun\Facades\Mailgun;
-use Bogardo\Mailgun\Mail\Message;
+use Illuminate\Support\Facades\Storage;
 
 class NewsletterController extends Controller
 {
@@ -39,33 +39,35 @@ class NewsletterController extends Controller
      */
     public function store(NewsletterFormRequest $request)
     {
-        // append image url to validated arr
+        //append image url to validated arr
         $validated = $request->validated();
         $validated['img'] = $request->file('img')->store('public/newsletters');
 
-        // new Newsletter
+        //new Newsletter
         $pn = Newsletter::create($validated);
 
         //building groups email
         if ($validated['to'] == 1) {
             $arrRecipients = TestUser::all()->toArray();
         }
-        // else if ($validated['to'] == 2) {
-        //     $recipients = Partner::StgoPartnersNews()->get()->toArray();
-        // }else if ($validated['to'] == 3) {
-        //     $recipients = Partner::RegionsPartnersNews()->get()->toArray();
-        // }
+        else if ($validated['to'] == 2) {
+            $arrRecipients = Partner::StgoPartnersNews()->get()->toArray();
+        }else if ($validated['to'] == 3) {
+            $arrRecipients = Partner::RegionsPartnersNews()->get()->toArray();
+        }
 
         //building message
+        $img = Storage::url($pn->img);
         $data = [
             'header' => asset('img/header.png'),
-            'img' => $pn->img,
+            'imgNews' => asset($img),
             'title' => $pn->title,
             'body' => $pn->body,
             'link' => $pn->link
         ];
 
-        Mailgun::send('emails.simple', $data, function (Message $message) use ($arrRecipients, $pn) {
+        // send and pass data to email view
+        Mailgun::send('emails.simple', $data, function ($message) use ($arrRecipients, $pn) {
             $message->from('informativo@mg.tusindicatoconsorcio.cl', $pn->sender_name)
                 ->subject($pn->subject);
 
