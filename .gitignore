@@ -3,7 +3,7 @@
 /public/storage
 /public/css/*
 /public/js/*
-/database/seeds/*
+/database/seeds/data_excel
 /storage/*.key
 /vendor
 .env
