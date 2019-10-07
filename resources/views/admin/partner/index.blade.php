@@ -6,9 +6,12 @@
         <div class="col-8">
             <h1>Bienvenido a Gestion de Tu Sindicato Consorcio</h1>
         </div>
+        <!-- partner status / con role auth -->
+        @if (auth()->user()->role->id < 3) 
         <div class="col-2">
             <a class="btn btn-success btn-block btn-lg" href="{{route('newsletter.create')}}">Enviar mensaje</a>
         </div>
+        @endif
         <div class="col-2">
             <a class="btn btn-primary btn-block btn-lg" href="{{route('partner.create')}}">Crear nuevo usuario</a>
         </div>
@@ -41,8 +44,7 @@
                                 <td>{{$partner->office->name}}</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a href="{{route('partner.show', $partner->id)}}"
-                                            class="btn btn-primary">ver</a>
+                                        <a href="{{route('partner.show', $partner->id)}}" class="btn btn-primary">ver</a>
                                     </div>
                                 </td>
                             </tr>
@@ -52,6 +54,6 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
 </div>
 @endsection
