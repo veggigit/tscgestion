@@ -8,6 +8,7 @@ require('../bootstrap');
 
 window.Vue = require('vue');
 
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -29,4 +30,21 @@ Vue.component('example-component', require('../components/ExampleComponent.vue')
 
 const app = new Vue({
     el: '#app',
+});
+
+$(document).ready(function () {
+    $('#table-partners').DataTable({
+        // "pageLength": 300,
+        "language": {
+            "paginate": {
+                "first": "Primero",
+                "last": "Último",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+            "lengthMenu": "Mostrar solamente _MENU_ registros",
+            "search": "Buscar:",
+            "info": "Mostrando pagina _PAGE_ of _PAGES_"
+        }
+    });
 });

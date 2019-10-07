@@ -16,7 +16,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table">
+                    <table id="table-partners" class="table">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
@@ -52,8 +52,6 @@
                 </div>
             </div>
         </div>
-        <div class="w-100"></div>
-        <span>{{$partners->links()}}</span>
     </div>
 </div>
 @endsection
