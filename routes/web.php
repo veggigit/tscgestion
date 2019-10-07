@@ -6,4 +6,4 @@ Route::resource('newsletter', 'NewsletterController')->only([
     'create', 'store'
 ]);
 
-Route::view('mail', 'emails.simple');
+// Route::view('mail', 'emails.simple');

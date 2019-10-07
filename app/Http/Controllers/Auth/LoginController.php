@@ -32,7 +32,7 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return $this->loggedOut($request) ?: redirect('/admin/partner');
+        return $this->loggedOut($request) ?: redirect('/partner');
     }
 
     /**
@@ -40,7 +40,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/partner';
+    protected $redirectTo = '/partner';
 
     /**
      * Create a new controller instance.
