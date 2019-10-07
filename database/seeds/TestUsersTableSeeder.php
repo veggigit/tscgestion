@@ -13,9 +13,10 @@ class TestUsersTableSeeder extends Seeder
     public function run()
     {
         TestUser::insert([
-            ['name' => 'Esteban G.','email' => 'estebancajina@gmail.com'],
-            ['name' => 'Esteban D.', 'email' => 'estebancajina@devmind.cl'],
-            ['name' => 'Esteban P.', 'email' => 'admindpmas@protonmail.com']
+            ['name' => 'Esteban Cajina','email' => 'estebancajina@gmail.com'],
+            ['name' => 'Esteban Cajina', 'email' => 'estebancajina@devmind.cl'],
+            ['name' => 'Carlos Marfull', 'email' => 'carlos.marfull@tusindicatoconsorcio.cl'],
+            ['name' => 'Pamela Walters', 'email' => 'pamela.walters@tusindicatoconsorcio.cl']
         ]);
     }
 }
