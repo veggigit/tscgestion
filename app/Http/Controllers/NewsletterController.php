@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Newsletter;
 use App\TestUser;
+use App\Partner;
 use App\Http\Requests\NewsletterFormRequest;
 use Bogardo\Mailgun\Facades\Mailgun;
 use Illuminate\Support\Facades\Storage;
@@ -28,7 +29,11 @@ class NewsletterController extends Controller
      */
     public function create()
     {
-        return view('admin.newsletter.create');
+        $directive = Partner::whereHas('tags', function($q) {
+            $q->where('partner_tag_id', 1);
+        })->get();
+        // $directive = Partner::all();
+        return view('admin.newsletter.create', compact('directive'));
     }
 
     /**

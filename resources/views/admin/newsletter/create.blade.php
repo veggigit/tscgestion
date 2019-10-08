@@ -2,6 +2,8 @@
 
 @section('content')
 
+{{dd($directive)}}
+
 <div class="container py-5">
 
     @if (session('newsletter-ok'))
