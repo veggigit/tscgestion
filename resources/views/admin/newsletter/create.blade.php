@@ -2,8 +2,6 @@
 
 @section('content')
 
-{{dd($directive)}}
-
 <div class="container py-5">
 
     @if (session('newsletter-ok'))
@@ -28,8 +26,10 @@
             <label for="to">Para</label>
             <select id="to" class="form-control" name="to">
                 <option value="1">Test</option>
-                <option value="2">Socios Santiago</option>
-                <option value="3">Socios Regiones</option>
+                <option value="2">Directiva sindical</option>
+                <option value="3">Coordinadores</option>
+                <option value="4">Socios Santiago</option>
+                <option value="5">Socios Regiones</option>
             </select>
         </div>
         <div class="form-group">

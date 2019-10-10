@@ -35,7 +35,7 @@ class Partner extends Model
         return $this->belongsToMany(PartnerTag::class);
     }
 
-    public function scopeStgoPartnersNews($query)
+    public function scopeSantiago($query)
     {
         $query->where('region_id', 6)
             ->where('partner_status_id', 1)
@@ -43,11 +43,31 @@ class Partner extends Model
         return $query;
     }
 
-    public function scopeRegionsPartnersNews($query)
+    public function scopeRegions($query)
     {
         $query->where('region_id', '!=', 6)
             ->where('partner_status_id', 1)
             ->select('first_name as name', 'personal_email as email');
+        return $query;
+    }
+
+    public function scopeDirective ($query)
+    {
+        $query->whereHas('tags', function($q){
+            $q->where('partner_tag_id', 1);
+        })
+        ->select('first_name as name', 'personal_email as email');
+
+        return $query;
+    }
+
+    public function scopeCoordinators ($query)
+    {
+        $query->whereHas('tags', function($q){
+            $q->where('partner_tag_id', 2);
+        })
+        ->select('first_name as name', 'personal_email as email');
+
         return $query;
     }
 }

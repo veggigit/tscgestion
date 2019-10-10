@@ -12,15 +12,6 @@ use Illuminate\Support\Facades\Storage;
 
 class NewsletterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -29,11 +20,7 @@ class NewsletterController extends Controller
      */
     public function create()
     {
-        $directive = Partner::whereHas('tags', function($q) {
-            $q->where('partner_tag_id', 1);
-        })->get();
-        // $directive = Partner::all();
-        return view('admin.newsletter.create', compact('directive'));
+        return view('admin.newsletter.create');
     }
 
     /**
@@ -52,13 +39,25 @@ class NewsletterController extends Controller
         $pn = Newsletter::create($validated);
 
         //building groups email
-        if ($validated['to'] == 1) {
+        if ($validated['to'] == 1) 
+        {
             $arrRecipients = TestUser::all()->toArray();
         }
-        else if ($validated['to'] == 2) {
-            $arrRecipients = Partner::StgoPartnersNews()->get()->toArray();
-        }else if ($validated['to'] == 3) {
-            $arrRecipients = Partner::RegionsPartnersNews()->get()->toArray();
+        else if ($validated['to'] == 2) 
+        {
+            $arrRecipients = Partner::directive()->get()->toArray();
+        }
+        else if ($validated['to'] == 3) 
+        {
+            $arrRecipients = Partner::coordinators()->get()->toArray();
+        }
+        else if ($validated['to'] == 4) 
+        {
+            $arrRecipients = Partner::santiago()->get()->toArray();
+        }
+        else if ($validated['to'] == 5) 
+        {
+            $arrRecipients = Partner::regions()->get()->toArray();
         }
 
         //building message
@@ -88,15 +87,5 @@ class NewsletterController extends Controller
         return back()->with('newsletter-ok', 'Mensaje enviado satisfactoriamente!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
 }

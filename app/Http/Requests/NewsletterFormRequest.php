@@ -26,7 +26,7 @@ class NewsletterFormRequest extends FormRequest
         return [
             'sender_name' => 'required',
             'sender_email' => 'required',
-            'to' => 'numeric|min:1|max:3',
+            'to' => 'numeric|min:1|max:5',
             'subject' => 'required',
             'title' => 'required',
             'body' => 'required',
